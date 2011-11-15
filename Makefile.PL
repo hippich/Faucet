@@ -21,6 +21,7 @@ requires 'Config::General'; # This should reflect the config file format you've 
 requires 'Catalyst::Model::Bitcoin';
 requires 'Catalyst::Plugin::Cache';
 requires 'Cache::FastMmap';
+requires 'Catalyst::TraitFor::Controller::reCAPTCHA';
 
 test_requires 'Test::More' => '0.88';
 catalyst;
