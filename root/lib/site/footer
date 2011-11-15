@@ -1,0 +1,6 @@
+<!-- BEGIN site/footer -->
+<p>
+  &copy; [% site.copyright %] <br />
+  [% site.license %]
+</p>
+<!-- END site/footer -->

@@ -1,0 +1,24 @@
+[% # config/main
+   #
+   # This is the main configuration template which is processed before
+   # any other page, by virtue of it being defined as a PRE_PROCESS
+   # template.  This is the place to define any extra template variables,
+   # macros, load plugins, and perform any other template setup.
+
+   IF Catalyst.debug;
+     # define a debug() macro directed to Catalyst's log
+     MACRO debug(message) CALL Catalyst.log.debug(message);
+   END;
+
+   # define a data structure to hold sitewide data
+   site = {
+     title     => c.config.name,
+     copyright => '2011 <a href="https://github.com/hippich">Pavel A. Karoukin</a>',
+     license   => 'Released under the <a target="_blank" href="http://www.gnu.org/licenses/agpl.html">AGPLv3+ license</a>.'
+   };
+
+   # set defaults for variables, etc.
+   DEFAULT
+     message = 'There is no message';
+
+-%]

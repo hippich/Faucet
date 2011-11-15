@@ -1,0 +1,3 @@
+<!-- BEGIN site/header -->
+<h1>[% c.config.long_name %] <small>Help to bootstrap [% c.config.coin_name %] community</small></h1>
+<!-- END site/header -->

@@ -1,0 +1,75 @@
+<div class="span10">
+  [% IF success %]
+    <h2>Done</h2>
+  [% ELSE %]
+    <h2>Request some [% c.config.coin_name %]s</h2>
+  [% END %]
+
+  <p></p>
+  <p>We give away <strong>[% c.config.coin_amount %] [% c.config.coin_name %]s</strong> to each unique visitor.</p>
+  <p>[% site.title %] runs on donations so please donate to <strong>[% c.config.donations_address %]</strong>.</p>
+
+  [% IF (address_error OR captcha_error) %]
+    <div class="alert-message error" data-alert="alert">
+      <a class="close" href="#">×</a>
+      <p><strong>Oh snap!</strong> Please correct error(s) below and try again.</p>
+    </div>
+  [% END %]
+
+  [% IF open %]
+    <form method="POST" action="/">
+      <input type='hidden' name='action' value='send' />
+
+      <fieldset>
+        <div class="clearfix [% IF address_error %]error[% END %]">
+          <label for="address">Address: </label>
+          <div class="input">
+            <input class="span6 xlarge [% IF address_error %]error[% END %]" type="text" name="address" value="[% c.req.params.address %]" />
+            [% IF address_error %]<div class="help-inline">Please enter correct address.</div>[% END %]
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <div class="clearfix [% IF captcha_error %]error[% END %]">
+          <label>Prove you are not a robot: </label>
+          <div class="input">
+            [% recaptcha %]
+            [% IF captcha_error %]<div class="help-inline">Please, re-enter code.</div>[% END %]
+          </div>
+        </div>
+      </fieldset>
+
+      <div class='actions'>
+        <input type='submit' class='btn primary' value='Request' />
+      </div>
+    </form>
+  [% ELSE %]
+    <div class="alert-message block-message success">
+      <p><strong>Well done!</strong> You successfully requested it. Feel free to share this page with your friends:</p>
+
+      <div class="alert-actions" style="margin-top: 20px;">
+        <!-- AddThis Button BEGIN -->
+        <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+        <a class="addthis_button_preferred_1"></a>
+        <a class="addthis_button_preferred_2"></a>
+        <a class="addthis_button_preferred_3"></a>
+        <a class="addthis_button_preferred_4"></a>
+        <a class="addthis_button_compact"></a>
+        <a class="addthis_counter addthis_bubble_style"></a>
+        </div>
+        <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=[% c.config.addthis_id %]"></script>
+        <!-- AddThis Button END -->
+      </div>
+    </div>
+  [% END %]
+</div>
+
+<div class="span4">
+  <h3>Statistics</h3>
+  
+  <p>Current [% c.config.coin_name %] balance: <strong>[% balance %]</strong>.</p>
+  <p>Donate: <small><strong>[% c.config.donations_address %]</strong></small>.</p>
+  <p>Requests processed since last restart: <strong>[% requests %]</strong>.</p>
+
+</div>
