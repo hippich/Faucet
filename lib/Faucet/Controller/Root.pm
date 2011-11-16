@@ -45,17 +45,19 @@ sub index :Path :Args(0) {
       }
 
       if ($c->forward('captcha_check')) {
-        # send coins 
-        $c->model('BitcoinServer')->send_to_address(
-          $c->req->params->{address},
-          $c->config->{coin_amount}
-        );
+        if (! $c->stash->{address_error}) {
+          # send coins 
+          $c->model('BitcoinServer')->send_to_address(
+            $c->req->params->{address},
+            $c->config->{coin_amount}
+          );
 
-        # Update cache and statistics.
-        $c->stash->{success} = 1;
-        $c->cache->set( $c->req->address, time );
-        $c->stash->{open} = 0;
-        $c->cache->set('requests', $c->cache->get('requests') + 1);
+          # Update cache and statistics.
+          $c->stash->{success} = 1;
+          $c->cache->set( $c->req->address, time );
+          $c->stash->{open} = 0;
+          $c->cache->set('requests', $c->cache->get('requests') + 1);
+        }
       }
       else {
         $c->stash->{captcha_error} = 1;
