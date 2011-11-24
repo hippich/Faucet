@@ -2,6 +2,8 @@
 
     $ git clone https://github.com/hippich/Faucet.git
     $ cd Faucet
+    $ git submodule init 
+    $ git submodule update
     $ perl Makefile.PL
     $ make installdeps
 
@@ -13,7 +15,11 @@ login/password to bitcoind, keys for reCaptcha and AddThis.
 
 ### Run development server
 
-Run script/faucet_server.pl to test the application.
+Install Catalyst::Devel and run script/faucet_server.pl to test 
+the application.
+
+    cpanm Catalyst::Devel
+    FAUCET_DEBUG=1 ./script/faucet_server.pl -r
 
 ### Deployment under Apache
 
