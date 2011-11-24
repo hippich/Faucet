@@ -37,7 +37,7 @@ sub index :Path :Args(0) {
     # Get captcha form
     $c->forward('captcha_get');
 
-    if ( $c->req->params->{action} eq 'send' && $c->stash->{open} && $c->stash->{authorized} ) {
+    if ( $c->req->params->{action} && $c->req->params->{action} eq 'send' && $c->stash->{open} && $c->stash->{authorized} ) {
 
       my $address = $c->req->params->{address};
 

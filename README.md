@@ -13,12 +13,18 @@ Install SQLite3 DB and import schema into faucet.db:
 
     sqlite3 faucet.db < schema.sql
 
-
 ### Configuration
 
 Copy supplied sample config file faucet_sample.conf to 
 faucet.conf and edit it. Make sure to include correct
 login/password to bitcoind, keys for reCaptcha and AddThis.
+
+You will need to specify full path to SQLite3 DB file. (Or
+you might want to configure it to use MySQL/PostgreSql DB)
+
+Also for Facebook authentication you will need to register 
+new application at http://www.facebook.com/developers/ and
+use obtained application and secret IDs in this config file.
 
 ### Run development server
 

@@ -5,12 +5,6 @@ use base 'Catalyst::Model::DBIC::Schema';
 
 __PACKAGE__->config(
     schema_class => 'Faucet::Schema',
-    
-    connect_info => {
-        dsn => 'dbi:SQLite:faucet.db',
-        user => '',
-        password => '',
-    }
 );
 
 =head1 NAME
