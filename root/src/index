@@ -1,5 +1,5 @@
-<div class="span10">
-  [% IF success %]
+<div class="span10 [% IF NOT authorized %]not-authorized[% END %]">
+  [% IF success OR NOT open %]
     <h2>Done</h2>
   [% ELSE %]
     <h2>Request some [% c.config.coin_name %]s</h2>
@@ -14,6 +14,28 @@
       <a class="close" href="#">×</a>
       <p><strong>Oh snap!</strong> Please correct error(s) below and try again.</p>
     </div>
+  [% END %]
+
+  [% IF NOT authorized %]
+    <p class='facebook-authorize'>
+      <strong>You need <a href='http://facebook.com' target='_blank'>Facebook</a> 
+      account in order to request [% c.config.coin_name %]. Please use button 
+      below to login into your Facebook account.</strong>
+    </p>    
+
+    <p class='facebook-button actions'>
+      <a href="[% c.uri_for('/authenticate_facebook') %]" class="btn large primary">Login with Facebook account</a>
+    </p>
+
+    <p class='facebook-description'>
+      Why we need you to login to Facebook? We use it as a protection against
+      multiple faucet requests. Unfortunately we had bad experience in the past 
+      where some bad guys would use multiple proxy servers to get advatage over 
+      too basic protection. Facebook implements pretty complex identity 
+      verification methods and we hope that it will make much harder to cheat 
+      this system.
+    </p>
+
   [% END %]
 
   [% IF open %]

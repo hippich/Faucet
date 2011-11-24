@@ -7,6 +7,13 @@
     $ perl Makefile.PL
     $ make installdeps
 
+### DB
+
+Install SQLite3 DB and import schema into faucet.db:
+
+    sqlite3 faucet.db < schema.sql
+
+
 ### Configuration
 
 Copy supplied sample config file faucet_sample.conf to 

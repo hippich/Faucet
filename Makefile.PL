@@ -22,6 +22,14 @@ requires 'Catalyst::Model::Bitcoin';
 requires 'Catalyst::Plugin::Cache';
 requires 'Cache::FastMmap';
 requires 'Catalyst::TraitFor::Controller::reCAPTCHA';
+requires 'Catalyst::Authentication::Credential::Facebook::OAuth2';
+requires 'Catalyst::Plugin::Session::State::Cookie';
+requires 'Catalyst::Plugin::Session::Store::FastMmap';
+requires 'Catalyst::View::TT';
+requires 'Catalyst::Plugin::Authentication';
+requires 'Catalyst::Model::DBIC::Schema';
+requires 'MooseX::NonMoose' => '0.16';
+requires 'MooseX::MarkAsMethods' => '0.13';
 
 test_requires 'Test::More' => '0.88';
 catalyst;

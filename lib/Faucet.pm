@@ -8,11 +8,15 @@ use Catalyst qw/
     ConfigLoader
     Static::Simple
     Cache
+    Authentication
+    Session
+    Session::Store::FastMmap
+    Session::State::Cookie
 /;
 
 extends 'Catalyst';
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 $VERSION = eval $VERSION;
 
 # Configure the application.
